@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class customerAdapter {
+public class CustomerAdapter {
     private final CustomerService customerService;
     private final CustomerMap customerMap;
 
-    public customerAdapter(CustomerService customerService, CustomerMap customerMap) {
+    public CustomerAdapter(CustomerService customerService, CustomerMap customerMap) {
         this.customerService = customerService;
         this.customerMap = customerMap;
     }
@@ -26,11 +26,16 @@ public class customerAdapter {
         CustomerEntity customer=customerService.create(customerEntity);
         return customerMap.mapToCustomerOutputDto(customer);
     }
-    public List<OutputDto> searchAll (InputDto inputDto)
+    public List<OutputDto> searchAll ()
     {
         List<CustomerEntity> customerEntities=customerService.searchAll();
         List<OutputDto> outputDtos=customerEntities.stream().map(customerMap::mapToCustomerOutputDto).collect(Collectors.toList());
         return outputDtos;
+    }
+    public OutputDto searchById(String id)
+    {
+        CustomerEntity customerEntity=customerService.serachById(id);
+        return customerMap.mapToCustomerOutputDto(customerEntity);
     }
     public OutputDto update(InputDto inputDto,String id)
     {

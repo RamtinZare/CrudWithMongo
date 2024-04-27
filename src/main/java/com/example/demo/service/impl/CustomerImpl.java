@@ -36,11 +36,11 @@ public class CustomerImpl implements CustomerService {
     @Override
     public CustomerEntity update(CustomerEntity customerEntity, String id) {
         CustomerEntity customer =customerReporitory.findById(id).orElseThrow(()-> new Exeption("not found this id"+id));
-        customer.setCustomerId(customer.getCustomerId());
-        customer.setCustomerEmail(customer.getCustomerEmail());
-        customer.setCustomerName(customer.getCustomerName());
-        customer.setCustomerMeli(customer.getCustomerMeli());
-        customer.setCustomerPhone(customer.getCustomerPhone());
+        customer.setCustomerId(customerEntity.getCustomerId());
+        customer.setCustomerEmail(customerEntity.getCustomerEmail());
+        customer.setCustomerName(customerEntity.getCustomerName());
+        customer.setCustomerMeli(customerEntity.getCustomerMeli());
+        customer.setCustomerPhone(customerEntity.getCustomerPhone());
 
         return customer;
     }
