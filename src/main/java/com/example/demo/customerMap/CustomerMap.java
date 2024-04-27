@@ -5,7 +5,7 @@ import com.example.demo.dto.OutputDto;
 import com.example.demo.entity.CustomerEntity;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CustomerMap  {
     CustomerEntity mapToCustomerEntity (InputDto inputDto);
     OutputDto mapToCustomerOutputDto(CustomerEntity customerEntity);
