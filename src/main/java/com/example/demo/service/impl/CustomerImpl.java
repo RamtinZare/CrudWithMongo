@@ -4,6 +4,7 @@ import com.example.demo.entity.CustomerEntity;
 import com.example.demo.exeption.Exeption;
 import com.example.demo.repository.CustomerReporitory;
 import com.example.demo.service.CustomerService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class CustomerImpl implements CustomerService {
         CustomerEntity customer =customerReporitory.findById(id).orElseThrow(()-> new Exeption("not found this id"+id));
         customer.setCustomerId(customerEntity.getCustomerId());
         customer.setCustomerEmail(customerEntity.getCustomerEmail());
+        customer.setAge(customerEntity.getAge());
         customer.setCustomerName(customerEntity.getCustomerName());
         customer.setCustomerMeli(customerEntity.getCustomerMeli());
         customer.setCustomerPhone(customerEntity.getCustomerPhone());
@@ -49,4 +51,10 @@ public class CustomerImpl implements CustomerService {
     public void delete(String id) {
         customerReporitory.deleteById(id);
     }
+
+    @Override
+    public List<CustomerEntity> sorted(String age) {
+        return customerReporitory.findAll(Sort.by(age));
+    }
+
 }

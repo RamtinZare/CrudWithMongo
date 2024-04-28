@@ -11,4 +11,5 @@ public interface CustomerService  {
     List<CustomerEntity> searchAll ();
     CustomerEntity update (CustomerEntity customerEntity,String id);
     void delete (String id);
+    List<CustomerEntity> sorted(String age);
 }

@@ -47,4 +47,10 @@ public class CustomerAdapter {
     {
         customerService.delete(id);
     }
+    public List<OutputDto> sort(String age)
+    {
+        List<CustomerEntity> customerEntities =customerService.sorted(age);
+        List<OutputDto> outputDtos=customerEntities.stream().map(customerMap::mapToCustomerOutputDto).collect(Collectors.toList());
+        return outputDtos;
+    }
 }

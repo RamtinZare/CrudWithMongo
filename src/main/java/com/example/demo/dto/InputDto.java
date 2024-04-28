@@ -14,6 +14,7 @@ public class InputDto {
 
     private String customerId;
     private String customerName;
+    private String age;
     private String customerEmail;
     private String customerMeli;
     private String customerPhone;

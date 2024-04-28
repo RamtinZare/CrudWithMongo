@@ -16,6 +16,7 @@ public class CustomerEntity {
     @Id
     private String customerId;
     private String customerName;
+    private String age;
     private String customerEmail;
     private String customerMeli;
     private String customerPhone;

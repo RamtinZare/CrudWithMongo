@@ -45,4 +45,10 @@ public class CostomerController {
         customerAdapter.delete(id);
         return null;
     }
+    @GetMapping("/{age}")
+    public ResponseEntity<List<OutputDto>> sorted (@PathVariable String age)
+    {
+        List<OutputDto> outputDtos =customerAdapter.sort(age);
+        return new ResponseEntity<>(outputDtos,HttpStatus.OK);
+    }
 }
